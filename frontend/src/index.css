@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* taste-skill rules:
+   - min-h-[100dvh] not h-screen
+   - CSS Grid, not flex-math
+   - Animate transform + opacity only (HW accel)
+*/
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg: #09090b;
+    --fg: #fafafa;
+    --accent: #ff5a1f;
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #09090b; }
+  button { cursor: pointer; }
+  input, textarea, select { background: transparent; }
+}
+
+@layer components {
+  .bento {
+    @apply rounded-bento bg-ink-900/40 backdrop-blur border border-ink-800 shadow-bento;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium tracking-wide;
+  }
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+}

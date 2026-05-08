@@ -1,0 +1,106 @@
+# PROMETHEUS backend — Python 3.11+
+# Pin all. CI runs pip-audit + Snyk.
+
+# === API server ===
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-multipart==0.0.19
+
+# === Google AI / ADK ===
+google-adk==1.5.0
+google-genai==1.5.0
+google-cloud-aiplatform==1.78.0
+
+# === Google Cloud ===
+google-cloud-firestore==2.20.0
+google-cloud-tasks==2.18.0
+google-cloud-secret-manager==2.22.0
+google-cloud-storage==2.19.0
+google-cloud-logging==3.12.0
+google-cloud-trace==1.16.0
+google-cloud-monitoring==2.27.1
+
+# === Workspace APIs ===
+google-api-python-client==2.155.0
+google-auth==2.36.0
+google-auth-oauthlib==1.2.1
+google-auth-httplib2==0.2.0
+
+# === Firebase Admin ===
+firebase-admin==6.6.0
+
+# === Async / HTTP ===
+httpx==0.28.1
+aiohttp==3.11.10
+tenacity==9.0.0
+
+# === Auth ===
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+PyJWT==2.10.1
+
+# === Stripe ===
+stripe==11.4.0
+
+# === External integrations ===
+deepgram-sdk==3.10.0
+
+# === Sanitization / validation ===
+bleach==6.2.0
+nh3==0.2.20
+beautifulsoup4==4.12.3
+lxml==5.3.0
+jsonschema==4.23.0
+json-repair==0.35.0
+
+# === Finance engine ===
+numpy==2.2.0
+pandas==2.2.3
+numpy-financial==1.0.0
+sympy==1.13.3
+
+# === Image processing ===
+Pillow==11.0.0
+
+# === Color / WCAG ===
+colormath==3.0.0
+wcag-contrast-ratio==0.9
+
+# === Templating ===
+jinja2==3.1.4
+
+# === Observability ===
+structlog==24.4.0
+opentelemetry-api==1.29.0
+opentelemetry-sdk==1.29.0
+opentelemetry-instrumentation-fastapi==0.50b0
+opentelemetry-instrumentation-httpx==0.50b0
+opentelemetry-exporter-gcp-trace==1.9.0
+
+# === Rate limiting / caching ===
+limits==3.13.0
+redis==5.2.1
+cachetools==5.5.0
+
+# === Misc ===
+python-dotenv==1.0.1
+typer==0.15.1
+rich==13.9.4
+orjson==3.10.12
+PyYAML==6.0.2
+
+# === Dev ===
+pytest==8.3.4
+pytest-asyncio==0.25.0
+pytest-cov==6.0.0
+pytest-mock==3.14.0
+pytest-httpx==0.35.0
+ruff==0.8.4
+mypy==1.13.0
+types-PyYAML==6.0.12.20240917
+types-bleach==6.2.0.20241123
+hypothesis==6.122.6
+freezegun==1.5.1
+respx==0.22.0

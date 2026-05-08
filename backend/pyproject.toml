@@ -1,0 +1,44 @@
+[project]
+name = "prometheus-backend"
+version = "2.0.0"
+description = "PROMETHEUS — multi-agent startup-in-a-box (V2 production rebuild)"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["tests/golden", ".venv", "venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "B", "C4", "UP", "ANN", "S", "BLE", "A", "COM", "DTZ", "T20", "RET", "SIM", "ARG", "PTH", "PL", "RUF"]
+ignore = ["ANN101", "ANN102", "PLR0913", "S101", "COM812"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "ARG", "PLR2004", "ANN"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["google.adk.*", "google.genai.*", "deepgram.*", "wcag_contrast_ratio.*", "numpy_financial.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers --cov=. --cov-report=term-missing"
+markers = [
+    "integration: hits real APIs, gated by RUN_INTEGRATION=1",
+    "slow: long-running tests",
+    "golden: golden idea regression"
+]

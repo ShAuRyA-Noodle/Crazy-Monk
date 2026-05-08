@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl *)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(pip install *)",
+      "Bash(pip-audit *)",
+      "Bash(uv *)",
+      "Bash(uvicorn *)",
+      "Bash(pytest *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(bun *)",
+      "Bash(vite *)",
+      "Bash(docker *)",
+      "Bash(gcloud *)",
+      "Bash(firebase *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(ruff *)",
+      "Bash(mypy *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(cat *)",
+      "mcp__mcp-search__*"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(* --no-verify *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)"
+    ]
+  },
+  "env": {
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}
