@@ -62,7 +62,7 @@ numpy-financial==1.0.0
 sympy==1.13.3
 
 # === Image processing ===
-Pillow==11.0.0
+Pillow==12.2.0
 
 # === Color / WCAG ===
 colormath==3.0.0
