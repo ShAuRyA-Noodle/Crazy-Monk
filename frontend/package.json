@@ -67,7 +67,7 @@
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.28.0",
     "eslint": "^9.17.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.4.16",
     "jsdom": "^26.0.0",
     "postcss": "^8.4.49",
