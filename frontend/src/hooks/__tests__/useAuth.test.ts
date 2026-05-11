@@ -7,7 +7,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 
-const bootstrapAuth = vi.fn();
+const { bootstrapAuth } = vi.hoisted(() => ({ bootstrapAuth: vi.fn() }));
 
 vi.mock("@/lib/auth", () => {
   const useAuthStore = (selector: (s: AuthState) => unknown) => selector(state);

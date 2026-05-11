@@ -4,11 +4,13 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 
-const exportArtifact = vi.fn();
-const success = vi.fn();
-const errorToast = vi.fn();
-const trackMock = vi.fn();
-const openMock = vi.fn();
+const { exportArtifact, success, errorToast, trackMock, openMock } = vi.hoisted(() => ({
+  exportArtifact: vi.fn(),
+  success: vi.fn(),
+  errorToast: vi.fn(),
+  trackMock: vi.fn(),
+  openMock: vi.fn(),
+}));
 
 vi.mock("@/lib/api", () => ({
   api: { exportArtifact: (req: unknown) => exportArtifact(req) },

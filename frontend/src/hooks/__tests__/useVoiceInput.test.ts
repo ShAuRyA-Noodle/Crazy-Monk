@@ -91,14 +91,16 @@ beforeEach(() => {
     },
   });
 
-  // requestAnimationFrame polyfill that fires immediately.
+  // requestAnimationFrame polyfill — schedules via setTimeout so the next
+  // frame is queued asynchronously (avoids infinite synchronous recursion
+  // when the hook re-requests inside its own callback).
   (globalThis as unknown as { requestAnimationFrame: (cb: FrameRequestCallback) => number }).requestAnimationFrame =
     (cb: FrameRequestCallback) => {
-      cb(0);
-      return 1;
+      const id = setTimeout(() => cb(performance.now()), 16) as unknown as number;
+      return id;
     };
   (globalThis as unknown as { cancelAnimationFrame: (id: number) => void }).cancelAnimationFrame =
-    () => undefined;
+    (id: number) => clearTimeout(id as unknown as ReturnType<typeof setTimeout>);
 });
 
 import { useVoiceInput } from "../useVoiceInput";
@@ -143,8 +145,10 @@ describe("useVoiceInput", () => {
   });
 
   it("surfaces NotAllowedError as friendly message", async () => {
+    // DOMException.name is a read-only getter; construct with the proper name
+    // via the 2-arg constructor instead of post-hoc assignment.
     (navigator.mediaDevices.getUserMedia as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
-      Object.assign(new DOMException("denied"), { name: "NotAllowedError" }),
+      new DOMException("denied", "NotAllowedError"),
     );
     const { result } = renderHook(() => useVoiceInput());
     await act(async () => {
